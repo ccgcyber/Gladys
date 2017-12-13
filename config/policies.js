@@ -69,6 +69,7 @@ module.exports.policies = {
   Room : ['checkToken'],
   Scenario : ['checkToken'],
   Script : ['checkToken'],
+  Sentence : ['checkToken'],
   Session : {
     newUser: ['signupAllowed'],
     createUser: ['signupAllowed'],
@@ -82,7 +83,8 @@ module.exports.policies = {
   System : {
     index: ['checkToken'],
     shutdown: ['checkToken', 'isAdmin'],
-    update: ['checkToken', 'isAdmin']
+    update: ['checkToken', 'isAdmin'],
+    healthCheck: true
   },
   Timer: ['checkToken'],
   Token : ['checkToken'],

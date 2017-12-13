@@ -107,6 +107,11 @@ module.exports.routes = {
   'patch /devicetype/:id': 'DeviceTypeController.update',
   'post /devicetype/:id/exec': 'DeviceTypeController.exec',
   'get /devicetype/:id': 'DeviceTypeController.getById',
+
+  // Sentence
+  'get /sentence': 'SentenceController.index',
+  'get /sentence/label': 'SentenceController.getLabels',
+  'patch /sentence/:id': 'SentenceController.update',
   
   // Event
   'get /event': 'EventController.index',
@@ -154,6 +159,7 @@ module.exports.routes = {
   'post /module/install': 'ModuleController.install',
   'post /module/:slug/config': 'ModuleController.config',
   'delete /module/:id': 'ModuleController.uninstall',
+  'post /module/:id/upgrade': 'ModuleController.upgrade',
 
   // Music
   'post /music/flushqueue': 'MusicController.flushQueue',
@@ -201,6 +207,11 @@ module.exports.routes = {
   'post /paramuser': 'ParamUserController.create',
   'patch /paramuser/:name': 'ParamUserController.update',
   'delete /paramuser/:name': 'ParamUserController.delete',
+
+  // Scenario 
+  'post /scenario/:id/export': 'ScenarioController.exportScenario',
+  'post /scenario': 'ScenarioController.importScenario',
+  'patch /scenario/:id': 'ScenarioController.updateScenario',
   
   // Script
   'get /script': 'ScriptController.index',
@@ -234,6 +245,7 @@ module.exports.routes = {
   'get /system': 'SystemController.index',
   'post /system/shutdown': 'SystemController.shutdown',
   'post /system/update': 'SystemController.update',
+  'get /system/health': 'SystemController.healthCheck',
   
   // Token
   'get /token': 'TokenController.index',

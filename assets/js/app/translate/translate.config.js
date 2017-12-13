@@ -40,7 +40,9 @@ var translationsEN = {
         CONFIG_FAIL_NOTIFICATION: 'Module configuration failed.',
         CONFIG_SUCCESS_NOTIFICATION: 'Module configured with success !',
         INSTALLED_SUCCESS_NOTIFICATION: 'Module installed with success : ',
-        INSTALLED_FAIL_NOTIFICATION: 'Module failed to install : '
+        INSTALLED_FAIL_NOTIFICATION: 'Module failed to install : ',
+        CURRENTLY_UPGRADING_NOTIFICATION: 'Module upgrading : ',
+        FAIL_UPGRADING_NOTIFICATION: 'Fail to upgrade module : '
     },
     SYSTEM: {
         UPDATE_DATA_SUCCESS: 'Data updated with success',
@@ -66,6 +68,16 @@ var translationsEN = {
     },
     VALIDATION: {
         ERROR: 'Some fields are invalid !'
+    },
+    BRAIN: {
+        TRAINNED_SUCCESS_NOTIFICATION: 'Brain trained with success !',
+        TRAINNED_FAIL_NOTIFICATION: 'Brain trained failure !',
+        SENTENCE_UPDATED_SUCCESS_NOTIFICATION: 'Sentence updated with success !',
+        SENTENCE_UPDATED_FAIL_NOTIFICATION: 'Fail to update sentence !'
+    },
+    SCENARIO: {
+        CREATE_ERROR: 'Cannot create scenario, the scenario may not be valid.',
+        UPDATE_ERROR: 'Cannot update scenario, the scenario may not be valid.'
     },
     DEFAULT: {
         ERROR: 'Something bad happened :/ Check Gladys logs for more informations.'
@@ -114,7 +126,9 @@ var translationsFR = {
         CONFIG_FAIL_NOTIFICATION: 'Erreur lors de la configuration du module.',
         CONFIG_SUCCESS_NOTIFICATION: 'Le module a été configuré avec succès !',
         INSTALLED_SUCCESS_NOTIFICATION: 'Module installé avec succès : ',
-        INSTALLED_FAIL_NOTIFICATION: 'Erreur lors de l\'installation du module : '
+        INSTALLED_FAIL_NOTIFICATION: 'Erreur lors de l\'installation du module : ',
+        CURRENTLY_UPGRADING_NOTIFICATION: 'Module en cours de mise à jour :',
+        FAIL_UPGRADING_NOTIFICATION: 'Erreur lors de la mise à jour du module : '
     },
     SYSTEM: {
         UPDATE_DATA_SUCCESS: 'Donnée Gladys mise à jour avec succès.',
@@ -140,6 +154,16 @@ var translationsFR = {
     },
     VALIDATION: {
         ERROR: 'Certains champs sont invalides !'
+    },
+    BRAIN: {
+        TRAINNED_SUCCESS_NOTIFICATION: 'Le Brain a été entrainé avec succès !',
+        TRAINNED_FAIL_NOTIFICATION: 'Il y a eu une erreur durant l\'entrainement du Brain',
+        SENTENCE_UPDATED_SUCCESS_NOTIFICATION: 'Phrase mise à jour avec succès !',
+        SENTENCE_UPDATED_FAIL_NOTIFICATION: 'Echec de l\'enregistrement de la phrase !'
+    },
+    SCENARIO: {
+        CREATE_ERROR: 'Impossible de créer le scénario, le scénario est peut-être invalide.',
+        UPDATE_ERROR: 'Impossible de mettre à jour le scénario, le scénario est peut-être invalide.'
     },
     DEFAULT: {
         ERROR: 'Une erreur inconnue est arrivée :/ Regardez les logs Gladys pour plus d\'informations.'

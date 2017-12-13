@@ -23,7 +23,8 @@ module.exports = function(originalText){
 
         return {
             text, 
-            houses: result
+            houses: result,
+            allHouses: houses
         };
     });
 };
@@ -34,5 +35,5 @@ module.exports = function(originalText){
  * Return true if the houseName is present in the sentence
  */
 function present(text, type){
-    return (text.toLowerCase().indexOf(type.toLowerCase()) > -1);
+    return (text.toLowerCase().indexOf(type ? type.toLowerCase() : type) > -1);
 }

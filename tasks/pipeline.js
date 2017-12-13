@@ -32,6 +32,8 @@ var cssFilesToInject = [
   'styles/device.css',
   'styles/weather.css',
   'styles/leaflet/leaflet.css',
+
+  'styles/onoffswitch.css',
   
   // all styles, disabled by default
   //'styles/**/*.css',
@@ -78,6 +80,8 @@ var jsFilesToInject = [
   'js/dependencies/bootstrap-slider.min.js',
 
   'js/dependencies/leaflet.js',
+
+  'js/dependencies/js-yaml.min.js',
   
   
   
