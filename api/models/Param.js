@@ -14,6 +14,12 @@
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 
+ /**
+ * @public
+ * @name Param
+ * @class
+ */
+
 module.exports = {
 
     attributes: {
@@ -22,6 +28,20 @@ module.exports = {
            type:'string',
            required: true,
            unique: true 
+        },
+
+        description: {
+            type:'string'
+        },
+
+        type: {
+            type: 'string',
+            enum: ['visible', 'hidden', 'secret'],
+            defaultsTo: 'visible'
+        },
+
+        module: {
+            model: 'Module'
         },
         
         value: {

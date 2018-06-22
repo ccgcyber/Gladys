@@ -25,6 +25,7 @@
     vm.changeValue = changeValue;
     vm.updateDeviceType = updateDeviceType;
     vm.changeTypeDisplay = changeTypeDisplay;
+    vm.changeTypeSensor = changeTypeSensor;
     vm.createDevice = createDevice;
     vm.deleteDevice = deleteDevice;
     vm.createDeviceType = createDeviceType;
@@ -34,7 +35,8 @@
     vm.nbElementToGet = 50;
     vm.remoteIsBusy = false;
     vm.noMoreElements = false;
-
+    vm.getDeviceTypesByRoom = getDeviceTypesByRoom;
+    
     vm.saving = false;
     vm.ready = false;
     vm.devices = [];
@@ -84,7 +86,16 @@
     function getDeviceTypesByRoom(){
        return deviceService.getDeviceTypeByRoom()
          .then(function(data){
-            vm.roomDeviceTypes = data.data; 
+            vm.roomDeviceTypes = [];
+
+            // only display rooms that have devices inside
+            data.data.forEach(function (room) {
+                var numberOfDevices = 0;
+                room.deviceTypes.forEach(function (deviceType) {
+                    if(deviceType.display) numberOfDevices++;
+                });
+                if(numberOfDevices > 0) vm.roomDeviceTypes.push(room);
+            });
          });
     }
     
@@ -136,7 +147,10 @@
             id: device.id,
             room: device.room.id,
             user: device.user,
-            name: device.name
+            name: device.name,
+            identifier: device.identifier,
+            protocol: device.protocol,
+            service: device.service
         };
         return deviceService.updateDevice(newDevice)
              .then(function(device){
@@ -208,17 +222,39 @@
         return updateDeviceType(type);
     }
     
+    function changeTypeSensor(type){
+        if(type.sensor) type.sensor = 0;
+        else type.sensor = 1;
+        
+        return updateDeviceType(type);
+    }
+   
      // waiting for websocket message
     function waitForNewValue(){
         
         io.socket.on('newDeviceState', function (deviceState) {
             updateValueType(deviceState);
+            updateRoomView(deviceState);
         });
 
         io.socket.on('newDevice', function (result) {
             vm.devices.push(result.device);
             $scope.$apply();
         });
+    }
+
+    function updateRoomView(newDeviceState) {
+        if(vm.roomDeviceTypes instanceof Array) {
+            vm.roomDeviceTypes.forEach(function(room) {
+                room.deviceTypes.forEach(function(type){
+                    if(type.id === newDeviceState.devicetype){
+                        type.lastValue = newDeviceState.value;
+                        type.lastChanged = newDeviceState.datetime;
+                        $scope.$apply();
+                    }
+                });
+            });
+        }
     }
     
     

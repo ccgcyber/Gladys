@@ -1,5 +1,5 @@
 var should = require('should');
-
+ 
 describe('House', function() {
 
   describe('isUserAtHome', function() {

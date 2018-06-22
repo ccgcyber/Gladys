@@ -20,6 +20,7 @@
         var service = {
             create: create,
             get: get, 
+            getUsers: getUsers,
             update: update,
             destroy: destroy
         };
@@ -35,11 +36,15 @@
         }
         
         function update(id, house) {
-            return $http({method: 'DELETE', url: '/house/' + id, data: house});
+            return $http({method: 'PATCH', url: '/house/' + id, data: house});
         }
         
         function destroy(id) {
             return $http({method: 'DELETE', url: '/house/' + id});
+        }
+
+        function getUsers(houseId){
+            return $http({method: 'GET', url: '/house/' + houseId + '/user'});
         }
 
     }

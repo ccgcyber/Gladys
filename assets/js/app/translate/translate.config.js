@@ -42,6 +42,7 @@ var translationsEN = {
         INSTALLED_SUCCESS_NOTIFICATION: 'Module installed with success : ',
         INSTALLED_FAIL_NOTIFICATION: 'Module failed to install : ',
         CURRENTLY_UPGRADING_NOTIFICATION: 'Module upgrading : ',
+        EMPTY_VERSION_FAIL_NOTIFICATION: 'The version is invalid !',
         FAIL_UPGRADING_NOTIFICATION: 'Fail to upgrade module : '
     },
     SYSTEM: {
@@ -60,7 +61,8 @@ var translationsEN = {
         day: 'Day',
         night: 'Night',
         HUMIDITY: 'Humidity',
-        GET_GEOLOCATION_FAILED: 'Geolocation failed.'
+        GET_GEOLOCATION_FAILED: 'Geolocation failed.',
+        GET_GEOLOCATION_FAILED_CREATE_HOUSE: 'Geolocation Failed. I tried first to geolocate you with your browser, but it failed. Then, I tried to get your house latitude & longitude, but it failed too. Please define a house in the parameters.'
     },
     CHAT: {
         TEXT_BOX_PLACEHOLDER: 'Write your message',
@@ -81,6 +83,16 @@ var translationsEN = {
     },
     DEFAULT: {
         ERROR: 'Something bad happened :/ Check Gladys logs for more informations.'
+    },
+    MODE: {
+        CREATED_FAIL_NOTIFICATION: 'Failed to change mode. ',
+        CREATED_SUCCESS_NOTIFICATION: 'Mode changed successfully. '
+    },
+    MAPS: {
+        AREA: 'Area',
+        NEW: 'New area',
+        EDIT: 'Modifier',
+        DELETE: 'Suprimer'
     }
 };
 
@@ -128,6 +140,7 @@ var translationsFR = {
         INSTALLED_SUCCESS_NOTIFICATION: 'Module installé avec succès : ',
         INSTALLED_FAIL_NOTIFICATION: 'Erreur lors de l\'installation du module : ',
         CURRENTLY_UPGRADING_NOTIFICATION: 'Module en cours de mise à jour :',
+        EMPTY_VERSION_FAIL_NOTIFICATION: 'La version est invalide !',
         FAIL_UPGRADING_NOTIFICATION: 'Erreur lors de la mise à jour du module : '
     },
     SYSTEM: {
@@ -146,7 +159,8 @@ var translationsFR = {
         day: 'Jour',
         night: 'Nuit',
         HUMIDITY: 'Humidité',
-        GET_GEOLOCATION_FAILED: 'Erreur lors de la géolocalisation :'
+        GET_GEOLOCATION_FAILED: 'Erreur lors de la géolocalisation :',
+        GET_GEOLOCATION_FAILED_CREATE_HOUSE: 'Erreur lors de la récupération de la météo. Je n\'ai pas réussi à vous localiser via votre navigateur, puis je n\'ai pas réussi à récupérer la latitude et la longitude de votre maison. Merci de définir une maison dans les paramètres.'
     },
     CHAT: {
         TEXT_BOX_PLACEHOLDER: 'Tapez votre message',
@@ -167,6 +181,16 @@ var translationsFR = {
     },
     DEFAULT: {
         ERROR: 'Une erreur inconnue est arrivée :/ Regardez les logs Gladys pour plus d\'informations.'
+    },
+    MODE: {
+        CREATED_FAIL_NOTIFICATION: 'Impossible de changer de mode. ',
+        CREATED_SUCCESS_NOTIFICATION: 'Mode changé avec succès. '
+    },
+    MAPS: {
+        AREA: 'Zone',
+        NEW: 'Nouvelle zone',
+        EDIT: 'Modifier',
+        DELETE: 'Suprimer'
     }
 };
 

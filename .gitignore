@@ -41,6 +41,7 @@
 
 #config/googleapi.js
 apidoc
+docs
 
 
 
@@ -120,3 +121,4 @@ nbproject
 typings
 jsconfig.json
 .env
+.vscode

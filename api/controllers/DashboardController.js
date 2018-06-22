@@ -13,12 +13,16 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
+const path = require('path');
+const fs = require('fs');
+const BASE_PATH = path.join(__dirname, '../../');
+
 module.exports = {
 
    index : function (req, res, next){
         gladys.box.get({user:req.session.User, view: 'dashboard'})
             .then(function(boxs){
-                return res.view('dashboard/index', { User: req.session.User, boxs: boxs, pageName: req.__('pagename-homepage') }); 
+                return res.view('dashboard/index', { User: req.session.User, boxs: boxs, pageName: req.__('pagename-homepage'), basePath: BASE_PATH}); 
             }); 
   },
 
@@ -44,6 +48,18 @@ module.exports = {
   
   module: function(req, res, next){
       res.view('module/index', { User: req.session.User, pageName: req.__('pagename-module') });
+  },
+
+  moduleConfigView: function(req, res, next){
+    gladys.module.getById({id: req.params.id})
+      .then((module) => {
+        var moduleConfigViewPath = `${BASE_PATH}/api/hooks/${module.slug}/views/configuration.ejs`;
+        fs.access(moduleConfigViewPath, fs.constants.F_OK, (err) => {
+          var moduleConfigViewExist = !err;
+          res.view('module/module-config-view', { User: req.session.User, pageName: req.__('pagename-module'), module, moduleConfigViewPath, moduleConfigViewExist});
+        });        
+      })
+      .catch(next);
   },
 
   alarm:function(req,res,next){

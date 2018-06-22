@@ -14,6 +14,12 @@
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 
+ /**
+ * @public
+ * @name Machine
+ * @class
+ */
+
 module.exports = {
 
     attributes: {
@@ -32,13 +38,17 @@ module.exports = {
             model: 'House'
         },
 
-        host: {
-            type: 'string'
+        room: {
+            model: 'Room'
         },
 
         me: {
             type: 'boolean',
             defaultsTo: false
+        },
+
+        lastSeen: {
+            type: 'datetime'
         }
 
     }

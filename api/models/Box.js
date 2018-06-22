@@ -5,6 +5,12 @@
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
 
+ /**
+ * @public
+ * @name Box
+ * @class
+ */
+
 module.exports = {
 
   attributes: {
@@ -27,6 +33,10 @@ module.exports = {
       user: {
           model: 'User',
           required: true
+      },
+
+      params: {
+          type: 'text'
       },
       
       active: {

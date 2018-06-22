@@ -80,6 +80,7 @@ module.exports = {
    * @apiName execDeviceType
    * @apiGroup DeviceType
    * @apiPermission authenticated
+   * @apiDescription This API is not for sensors ! It's only for devices that need to execute an action. Ex: A lamp. If you want to save the state of a sensor, you need to use the POST /devicestate route. 
    *
    * @apiParam {float} [value] New value to apply to the deviceType
    * 
@@ -92,6 +93,24 @@ module.exports = {
             })
             .catch(next);
   },
+
+  /**
+   * @api {get} /devicetype/:id/exec change a deviceType state (GET)
+   * @apiName execDeviceTypeGet
+   * @apiGroup DeviceType
+   * @apiPermission authenticated
+   * @apiDescription This API is not for sensors ! It's only for devices that need to execute an action. Ex: A lamp. If you want to save the state of a sensor, you need to use the POST /devicestate route. 
+   * @apiParam {float} [value] New value to apply to the deviceType
+   * 
+   * @apiUse DeviceStateSuccess
+   */
+  execGet: function(req, res, next){
+    gladys.deviceType.exec({devicetype: req.params.id, value: req.query.value})
+          .then(function(state){
+              return res.json(state);
+          })
+          .catch(next);
+},
   
   /**
    * @api {get} /devicetype/room get by room
@@ -112,6 +131,50 @@ module.exports = {
         })
         .catch(next);
   },
+
+  /**
+   * @api {get} /room/:id/devicetype get devicetype in room
+   * @apiName getDeviceTypeInRoom
+   * @apiGroup DeviceType
+   * @apiPermission authenticated
+   *
+   * @apiSuccessExample {json} Success-Response:
+   * HTTP/1.1 200 OK
+   *  
+   * {
+   *    "id": 1,
+   *    "name": "room",
+   *    "house": 1,
+   *    "deviceTypes": [
+   *        {
+   *            "name": "Light",
+   *            "id": 1,
+   *            "type": "binary",
+   *            "category": "light",
+   *            "tag": "light",
+   *            "unit": null,
+   *            "min": 0,
+   *            "max": 1,
+   *            "display": 1,
+   *            "sensor": 0,
+   *            "identifier": "THIS_IS_MY_IDENTIFIER",
+   *            "device": 1,
+   *            "service": "test",
+   *            "lastChanged": null,
+   *            "lastValue": null,
+   *            "roomHouse": 1
+   *        }
+   *    ]
+   * }  
+   */
+  getInRoom: function(req, res, next){
+    gladys.deviceType.getByRoom({room: req.params.id})
+      .then((roomsDeviceTypes) => {
+         if(roomsDeviceTypes.length === 0) return res.json({id: req.params.id, deviceTypes: []});
+         return res.json(roomsDeviceTypes[0]); 
+      })
+      .catch(next);
+},
 
   /**
    * @api {get} /devicetype/:id get by id
@@ -140,6 +203,20 @@ module.exports = {
   delete: function(req, res, next){
       gladys.deviceType.delete({id: req.params.id})
         .then(() => res.json({success: true}))
+        .catch(next);
+  },
+
+   /**
+   * @api {patch} /devicetype/:id patch deviceType
+   * @apiName patchDeviceType
+   * @apiGroup DeviceType
+   * @apiPermission authenticated
+   * 
+   * @apiUse DeviceTypeSuccess
+   */
+  update: function(req, res, next) {
+      gladys.deviceType.update(req.params.id, req.body)
+        .then((deviceType) => res.json(deviceType))
         .catch(next);
   }
   

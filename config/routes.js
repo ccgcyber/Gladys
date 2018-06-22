@@ -40,6 +40,7 @@ module.exports.routes = {
   
   //dashboard
   '/dashboard': 'DashboardController.index' ,
+  '/dashboard/module/:id/configuration': 'DashboardController.moduleConfigView',
   
   //Action
   'post /action': 'ActionController.create',
@@ -69,7 +70,9 @@ module.exports.routes = {
   
   // Box
   'get /box': 'BoxController.index',
+  'get /box/:id': 'BoxController.getById',
   'post /box': 'BoxController.create',
+  'patch /box/:id': 'BoxController.update',
   'delete /box/:id': 'BoxController.delete',
   
   //BoxType
@@ -78,9 +81,10 @@ module.exports.routes = {
   // Brain
   'get /brain/classify': 'BrainController.classify', 
   'post /brain/trainnew': 'BrainController.trainNew', 
-  
+
   // CalendarEvent
   'get /calendarevent' : 'CalendarEventController.index',
+  'get /calendarevent/all' : 'CalendarEventController.get',
   
   //Category
   'get /category': 'CategoryController.index',
@@ -104,8 +108,10 @@ module.exports.routes = {
   'post /devicetype': 'DeviceTypeController.create',
   'delete /devicetype/:id': 'DeviceTypeController.delete',
   'get /devicetype/room': 'DeviceTypeController.getByRoom',
+  'get /room/:id/devicetype': 'DeviceTypeController.getInRoom',
   'patch /devicetype/:id': 'DeviceTypeController.update',
   'post /devicetype/:id/exec': 'DeviceTypeController.exec',
+  'get /devicetype/:id/exec': 'DeviceTypeController.execGet',
   'get /devicetype/:id': 'DeviceTypeController.getById',
 
   // Sentence
@@ -141,6 +147,7 @@ module.exports.routes = {
   'post /location': 'LocationController.create',
   'get /location/create': 'LocationController.create',
   'get /location': 'LocationController.get',
+  'get /user/:id/location': 'LocationController.getByUser',
   
   // Machine
   'get /machine' : 'MachineController.get',
@@ -198,6 +205,8 @@ module.exports.routes = {
   
   // Param
   'get /param': 'ParamController.index',
+  'get /module/:id/param': 'ParamController.getByModule',
+  'get /param/:name': 'ParamController.getByName',
   'post /param': 'ParamController.create',
   'patch /param/:name': 'ParamController.update',
   'delete /param/:name': 'ParamController.delete',
@@ -246,7 +255,7 @@ module.exports.routes = {
   'post /system/shutdown': 'SystemController.shutdown',
   'post /system/update': 'SystemController.update',
   'get /system/health': 'SystemController.healthCheck',
-  
+
   // Token
   'get /token': 'TokenController.index',
   'post /token': 'TokenController.create',
