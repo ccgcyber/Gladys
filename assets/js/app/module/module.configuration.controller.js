@@ -1,12 +1,4 @@
-/** 
-  * Gladys Project
-  * http://gladysproject.com
-  * Software under licence Creative Commons 3.0 France 
-  * http://creativecommons.org/licenses/by-nc-sa/3.0/fr/
-  * You may not use this software for commercial purposes.
-  * @author :: Pierre-Gilles Leymarie
-  */
-  
+
  (function () {
     'use strict';
 
@@ -22,11 +14,13 @@
         
         vm.init = init;
         vm.updateParam = updateParam;
+        vm.startModuleSetup = startModuleSetup;
         
         vm.moduleId;
 
-        function init(moduleId){
+        function init(moduleId, moduleSlug){
             vm.moduleId = moduleId;
+            vm.moduleSlug = moduleSlug;
             getParam(moduleId);
         }
 
@@ -43,6 +37,16 @@
               .then(function(){
                  vm.saving = false; 
               });
+        }
+
+        function startModuleSetup(){
+            moduleService.config(vm.moduleSlug)
+                .then(function(){
+                    notificationService.successNotificationTranslated('MODULE.CONFIG_SUCCESS_NOTIFICATION');
+                })
+                .catch(function(err) {
+                    notificationService.errorNotificationTranslated('MODULE.CONFIG_FAIL_NOTIFICATION');
+                });
         }
 
         

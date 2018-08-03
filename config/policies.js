@@ -38,7 +38,7 @@ module.exports.policies = {
   CalendarList : ['checkToken'],
   Category: ['checkToken'],
   ChromeNotification : ['checkToken'],
-  Dashboard: [ 'authenticated'],
+  Dashboard: [ 'authenticated', 'localize'],
   Event: ['checkToken'], 
   EventType: ['checkToken'], 
   Device: ['checkToken'],
@@ -96,11 +96,16 @@ module.exports.policies = {
     delete: ['checkToken', 'isAdmin'],
     update: ['checkToken'],
     whoami: ['checkToken'],
-    seen: ['checkToken']
+    seen: ['checkToken'],
+    changePassword: ['checkToken']
   },
   Welcome : {
     index: [],
     login: [],
+    forgotPassword: [],
+    resetPassword: [],
+    postForgotPassword: [],
+    postResetPassword: [],
     installation: ['signupAllowed']
   },
   Weather : ['checkToken'],
